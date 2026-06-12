@@ -2,17 +2,17 @@
  * Krizz Portfolio SPA - Application Logic
  * Implements: dynamic SPA routing, voice note player simulation,
  * multi-step modal form, diagnostic quiz, media gallery lightbox,
- * and scroll-triggered animations.
+ * scroll-triggered animations, and interactive mock payment checkout.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
     initRouting();
     initScrollAnimations();
     initVoicePlayer();
     initIntakeForm();
     initPathfinderQuiz();
     initEGXGallery();
+    initPaymentCheckout();
 });
 
 /* ==========================================================================
@@ -221,7 +221,7 @@ function initVoicePlayer() {
 }
 
 /* ==========================================================================
-   4. MULTI-STEP QUALIFYING DIRECTION INTENDED FORM (WITH LOCALSTORAGE)
+   4. MULTI-STEP QUALIFYING DIRECTION APPLICATION FORM (WITH LOCALSTORAGE)
    ========================================================================== */
 function initIntakeForm() {
     const modal = document.getElementById('apply-modal');
@@ -451,10 +451,13 @@ function initPathfinderQuiz() {
         let badge = "";
         let desc = "";
         let ctaText = "";
+        let targetType = "payment"; // Default to interactive payment checkout
+        let targetItemName = "Socratic Study Space";
+        let targetItemPrice = "£20.00/mo";
         let ctaHref = "";
         let secondaryCtaText = "";
         let secondaryCtaHref = "";
-        let isModalTrigger = false;
+        let isApplyModalTrigger = false;
 
         // Path Matching Logic
         if (ans3 === "high" || ans1 === "alignment" || ans2 === "one-on-one") {
@@ -463,7 +466,7 @@ function initPathfinderQuiz() {
             title = "Direction Program";
             desc = "You've proven you can generate capital, but your fitness, focus, or personal alignment is lagging. Direction provides 90 days of direct 1-on-1 WhatsApp auditing to reshape the man behind the money.";
             ctaText = "Apply for Direction (£1,000)";
-            isModalTrigger = true;
+            isApplyModalTrigger = true;
             secondaryCtaText = "View Details";
             secondaryCtaHref = "#/direction";
         } else if (ans1 === "logistics") {
@@ -473,6 +476,7 @@ function initPathfinderQuiz() {
             desc = "You need direct connections without the agency markups. We provide vetted direct links for UK and Medina properties, or fleet and trade motor insurance brokers.";
             ctaText = "Explore Services";
             ctaHref = "#/services";
+            targetType = "link";
             secondaryCtaText = "Message WhatsApp";
             secondaryCtaHref = "https://wa.me/447727053922";
         } else if (ans2 === "community" || ans1 === "revenue") {
@@ -481,7 +485,8 @@ function initPathfinderQuiz() {
             title = "Socratic Study Space";
             desc = "You need structural guidance, peer accountability, and a curated learning curriculum to sharpen your business and life. Join other operators in the Study Space.";
             ctaText = "Join Socratic Study Space (£20/mo)";
-            ctaHref = "https://whop.com/krizz-c7c9?a=winnerkrizz";
+            targetItemName = "Socratic Study Space";
+            targetItemPrice = "£20.00/mo";
             secondaryCtaText = "Read the Book first";
             secondaryCtaHref = "https://winnerkrizz.gumroad.com/";
         } else {
@@ -490,7 +495,8 @@ function initPathfinderQuiz() {
             title = "The Slave Mind Protocol";
             desc = "Start with the absolute foundations. The Slave Mind Protocol details the daily structures, training methodologies, and focus routines for the price of a coffee.";
             ctaText = "Grab the Protocol (£1)";
-            ctaHref = "https://winnerkrizz.gumroad.com/";
+            targetItemName = "The Slave Mind Protocol";
+            targetItemPrice = "£1.00";
             secondaryCtaText = "Socratic Study Space";
             secondaryCtaHref = "https://whop.com/krizz-c7c9?a=winnerkrizz";
         }
@@ -501,9 +507,12 @@ function initPathfinderQuiz() {
                 <h3 class="result-title">${title}</h3>
                 <p class="result-desc">${desc}</p>
                 <div class="btn-group" style="margin-top: 0; max-width: 100%;">
-                    ${isModalTrigger ? 
+                    ${isApplyModalTrigger ? 
                         `<button class="btn-primary open-apply-trigger">Apply Now</button>` :
-                        `<a href="${ctaHref}" target="_blank" rel="noopener" class="btn-primary">${ctaText}</a>`
+                        (targetType === "payment" ?
+                            `<button class="btn-primary open-checkout-quiz" data-item="${targetItemName}" data-price="${targetItemPrice}">${ctaText}</button>` :
+                            `<a href="${ctaHref}" class="btn-primary">${ctaText}</a>`
+                        )
                     }
                     ${secondaryCtaHref.startsWith('#') ? 
                         `<a href="${secondaryCtaHref}" class="btn-secondary">${secondaryCtaText}</a>` :
@@ -514,10 +523,19 @@ function initPathfinderQuiz() {
             </div>
         `;
 
-        // Modal triggers on results card
-        if (isModalTrigger) {
+        // Attach listeners for quiz dynamic output triggers
+        if (isApplyModalTrigger) {
             container.querySelector('.open-apply-trigger').addEventListener('click', () => {
                 document.getElementById('apply-modal').classList.add('active');
+            });
+        }
+
+        const openCheckoutQuizBtn = container.querySelector('.open-checkout-quiz');
+        if (openCheckoutQuizBtn) {
+            openCheckoutQuizBtn.addEventListener('click', (e) => {
+                const name = e.currentTarget.getAttribute('data-item');
+                const price = e.currentTarget.getAttribute('data-price');
+                window.openCheckoutModal(name, price);
             });
         }
 
@@ -599,5 +617,129 @@ function initEGXGallery() {
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+}
+
+/* ==========================================================================
+   7. INTERACTIVE MOCK PAYMENT CHECKOUT SYSTEM
+   ========================================================================== */
+function initPaymentCheckout() {
+    const checkoutModal = document.getElementById('checkout-modal');
+    const closeBtn = document.getElementById('close-checkout-modal');
+    const checkoutForm = document.getElementById('checkout-form');
+    const mainContent = document.getElementById('checkout-main-content');
+    const successScreen = document.getElementById('checkout-success-screen');
+    const payBtn = document.getElementById('btn-pay-now');
+    const applePayBtn = document.getElementById('btn-mock-apple-pay');
+    
+    const summaryName = document.getElementById('checkout-summary-name');
+    const summaryPrice = document.getElementById('checkout-summary-price');
+    const itemTitle = document.getElementById('checkout-item-title');
+    
+    // Globally expose checkout trigger so pathfinder quiz can invoke it
+    window.openCheckoutModal = function(itemName, itemPrice) {
+        // Reset states
+        mainContent.style.display = 'block';
+        successScreen.style.display = 'none';
+        checkoutForm.reset();
+        payBtn.textContent = itemName.includes('Subscription') || itemName.includes('Space') ? 'Pay and Subscribe' : 'Pay Now';
+        payBtn.disabled = false;
+        
+        // Load details
+        itemTitle.textContent = `Checkout`;
+        summaryName.textContent = itemName;
+        summaryPrice.textContent = itemPrice;
+        
+        // Show modal
+        checkoutModal.classList.add('active');
+        checkoutModal.setAttribute('aria-hidden', 'false');
+    };
+
+    function closeCheckout() {
+        checkoutModal.classList.remove('active');
+        checkoutModal.setAttribute('aria-hidden', 'true');
+    }
+
+    closeBtn.addEventListener('click', closeCheckout);
+    document.getElementById('close-success-btn').addEventListener('click', closeCheckout);
+    
+    checkoutModal.addEventListener('click', (e) => {
+        if (e.target === checkoutModal) closeCheckout();
+    });
+
+    // Intercept external Whop and Gumroad billing links to route to our local checkout
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        
+        const href = link.getAttribute('href') || '';
+        if (href.includes('whop.com') || href.includes('gumroad.com')) {
+            e.preventDefault();
+            
+            let name = "Socratic Study Space";
+            let price = "£20.00/mo";
+            
+            if (href.includes('gumroad.com')) {
+                name = "The Slave Mind Protocol";
+                price = "£1.00";
+            }
+            
+            window.openCheckoutModal(name, price);
+        }
+    });
+
+    // Credit Card formatting listeners (delightful micro-interactions)
+    const cardNumberInput = document.getElementById('card-number');
+    const cardExpiryInput = document.getElementById('card-expiry');
+    const cardCvcInput = document.getElementById('card-cvc');
+
+    cardNumberInput.addEventListener('input', (e) => {
+        // Formats card values with gaps: 4242 4242...
+        let val = e.target.value.replace(/\D/g, '');
+        let formatted = val.match(/.{1,4}/g);
+        e.target.value = formatted ? formatted.join(' ') : '';
+    });
+
+    cardExpiryInput.addEventListener('input', (e) => {
+        // Formats expiry values: MM/YY
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.length >= 2) {
+            e.target.value = val.substring(0,2) + '/' + val.substring(2,4);
+        } else {
+            e.target.value = val;
+        }
+    });
+
+    cardCvcInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+    });
+
+    // Submit Handler: Simulate secure gateway connection with delay
+    checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        payBtn.disabled = true;
+        payBtn.textContent = "Processing Securely...";
+        
+        setTimeout(() => {
+            // Transition to Success screen
+            mainContent.style.display = 'none';
+            successScreen.style.display = 'block';
+        }, 1600);
+    });
+
+    // Apple Pay Simulation handler
+    applePayBtn.addEventListener('click', () => {
+        applePayBtn.style.transform = 'scale(0.98)';
+        applePayBtn.style.opacity = '0.8';
+        
+        setTimeout(() => {
+            applePayBtn.style.transform = 'scale(1)';
+            applePayBtn.style.opacity = '1';
+            
+            // Transition to Success screen
+            mainContent.style.display = 'none';
+            successScreen.style.display = 'block';
+        }, 1000);
     });
 }

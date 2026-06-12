@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DESIGN SYSTEM & CUSTOM VARIABLES
+   DESIGN SYSTEM & CUSTOM VARIABLES (EMERALD & MINT PORTFOLIO)
    ========================================================================== */
 :root {
     /* Color Palette */
@@ -8,14 +8,14 @@
     --text-muted: #a9a79e;
     --text-faint: #6e6c64;
     
-    /* Primary Accent: Gold Gradient Palette */
-    --gold-base: #c49a5e;
-    --gold-glow: rgba(196, 154, 94, 0.15);
-    --gold-border: rgba(196, 154, 94, 0.3);
-    --gold-gradient: linear-gradient(135deg, #d8bc8e 0%, #c49a5e 100%);
+    /* Primary Accent: Emerald & Mint Gradient Palette */
+    --emerald-base: #10b981;
+    --emerald-glow: rgba(16, 185, 129, 0.12);
+    --emerald-border: rgba(16, 185, 129, 0.25);
+    --emerald-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
     
     /* Surface and Borders */
-    --surface-glass: rgba(19, 18, 17, 0.7);
+    --surface-glass: rgba(19, 18, 17, 0.75);
     --surface-card: #131211;
     --border-line: #1c1b19;
     --border-light: rgba(255, 255, 255, 0.04);
@@ -69,8 +69,8 @@ p {
     font-style: italic;
     font-family: var(--font-heading);
     font-weight: 400;
-    color: var(--gold-base);
-    background: var(--gold-gradient);
+    color: var(--emerald-base);
+    background: var(--emerald-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -89,7 +89,7 @@ p {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(11, 11, 10, 0.82);
+    background: rgba(11, 11, 10, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-line);
@@ -144,7 +144,7 @@ p {
 }
 
 .nav-item:hover, .nav-item.active {
-    color: var(--gold-base);
+    color: var(--emerald-base);
 }
 
 .nav-item::after {
@@ -154,7 +154,7 @@ p {
     left: 0;
     width: 100%;
     height: 1px;
-    background: var(--gold-gradient);
+    background: var(--emerald-gradient);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
@@ -184,7 +184,7 @@ p {
 .kicker {
     font-family: var(--font-heading);
     font-weight: 400;
-    color: var(--gold-base);
+    color: var(--emerald-base);
     line-height: 1.2;
     font-size: clamp(24px, 5vw, 32px);
     margin: 15px auto 20px;
@@ -269,7 +269,7 @@ p {
     font-family: var(--font-heading);
     font-size: 32px;
     font-weight: 600;
-    color: var(--gold-base);
+    color: var(--emerald-base);
     line-height: 1;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
@@ -298,7 +298,7 @@ p {
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gold-base);
+    color: var(--emerald-base);
     margin-bottom: 24px;
 }
 
@@ -335,7 +335,7 @@ p {
     line-height: 1.4;
     color: var(--text-color) !important;
     padding-left: 20px;
-    border-left: 2px solid var(--gold-base);
+    border-left: 2px solid var(--emerald-base);
     margin-top: 24px !important;
 }
 
@@ -377,7 +377,7 @@ p {
     height: 9px;
     border-radius: 50%;
     background: var(--bg-color);
-    border: 2px solid var(--gold-base);
+    border: 2px solid var(--emerald-base);
     transition: transform 0.3s ease;
 }
 
@@ -444,15 +444,15 @@ p {
 }
 
 .btn-primary {
-    background: var(--gold-gradient);
+    background: var(--emerald-gradient);
     color: #0b0b0a;
     border: none;
-    box-shadow: 0 4px 15px rgba(196, 154, 94, 0.2);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(196, 154, 94, 0.35);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
 }
 
 .btn-primary:active {
@@ -461,13 +461,13 @@ p {
 
 .btn-secondary {
     background: transparent;
-    color: var(--gold-base);
-    border: 1px solid var(--gold-border);
+    color: var(--emerald-base);
+    border: 1px solid var(--emerald-border);
 }
 
 .btn-secondary:hover {
-    border-color: var(--gold-base);
-    background: rgba(196, 154, 94, 0.06);
+    border-color: var(--emerald-base);
+    background: rgba(16, 185, 129, 0.05);
     transform: translateY(-2px);
 }
 
@@ -499,10 +499,10 @@ p {
    GLASSMORPHISM BOXES & OFFERS
    ========================================================================== */
 .glass-box {
-    border-left: 2px solid var(--gold-base);
+    border-left: 2px solid var(--emerald-base);
     padding: 4px 0 4px 24px;
     margin-top: 12px;
-    background: linear-gradient(90deg, rgba(196, 154, 94, 0.03) 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.02) 0%, transparent 100%);
 }
 
 .glass-box p {
@@ -537,17 +537,17 @@ p {
 }
 
 .offer-card:hover {
-    border-color: var(--gold-border);
+    border-color: var(--emerald-border);
     transform: translateY(-2px);
 }
 
 .offer-card.glow-card {
-    border-color: rgba(196, 154, 94, 0.2);
+    border-color: rgba(16, 185, 129, 0.15);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
 }
 
 .offer-card.glow-card:hover {
-    border-color: var(--gold-base);
+    border-color: var(--emerald-base);
 }
 
 .offer-header {
@@ -565,8 +565,8 @@ p {
 .offer-price {
     font-size: 15px;
     font-weight: 600;
-    color: var(--gold-base);
-    background: var(--gold-gradient);
+    color: var(--emerald-base);
+    background: var(--emerald-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -590,7 +590,7 @@ p {
    INTERACTIVE VOICE NOTE COMPONENT
    ========================================================================== */
 .voice-player-card {
-    background: linear-gradient(135deg, rgba(25, 24, 23, 0.8) 0%, rgba(19, 18, 17, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(23, 25, 24, 0.8) 0%, rgba(17, 19, 18, 0.9) 100%);
     border: 1px solid var(--border-line);
     border-radius: 8px;
     padding: 20px;
@@ -609,7 +609,7 @@ p {
 .vp-avatar {
     width: 38px;
     height: 38px;
-    background: var(--gold-gradient);
+    background: var(--emerald-gradient);
     border-radius: 50%;
     color: #0b0b0a;
     display: flex;
@@ -632,15 +632,15 @@ p {
 
 .vp-status {
     font-size: 11px;
-    color: #4cd964;
+    color: #10b981;
 }
 
 .vp-badge {
     margin-left: auto;
     font-size: 10px;
-    background: rgba(196, 154, 94, 0.1);
-    color: var(--gold-base);
-    border: 1px solid var(--gold-border);
+    background: rgba(16, 185, 129, 0.08);
+    color: var(--emerald-base);
+    border: 1px solid var(--emerald-border);
     padding: 4px 8px;
     border-radius: 3px;
     text-transform: uppercase;
@@ -661,7 +661,7 @@ p {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: var(--gold-base);
+    background: var(--emerald-base);
     color: #0b0b0a;
     border: none;
     cursor: pointer;
@@ -674,7 +674,7 @@ p {
 
 .vp-play-btn:hover {
     transform: scale(1.05);
-    background-color: #d8ac6e;
+    background-color: #34d399;
 }
 
 .vp-waveform {
@@ -694,7 +694,7 @@ p {
 }
 
 .vp-waveform.playing .wave-bar {
-    background-color: var(--gold-base);
+    background-color: var(--emerald-base);
 }
 
 .vp-time {
@@ -715,7 +715,7 @@ p {
    DIAGNOSTIC PATHFINDER QUIZ LAYOUT
    ========================================================================== */
 .diagnostic-section {
-    background: linear-gradient(180deg, rgba(19, 18, 17, 0.6) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(17, 19, 18, 0.6) 0%, transparent 100%);
     border-radius: 8px;
     padding: 30px 24px;
     border: 1px solid var(--border-line);
@@ -770,7 +770,7 @@ p {
 
 .progress-fill {
     height: 100%;
-    background: var(--gold-gradient);
+    background: var(--emerald-gradient);
     transition: width 0.3s ease;
 }
 
@@ -800,9 +800,9 @@ p {
 }
 
 .quiz-opt-btn:hover {
-    border-color: var(--gold-border);
+    border-color: var(--emerald-border);
     color: var(--text-color);
-    background-color: rgba(196, 154, 94, 0.04);
+    background-color: rgba(16, 185, 129, 0.03);
     transform: translateX(2px);
 }
 
@@ -815,9 +815,9 @@ p {
 .result-badge {
     display: inline-block;
     font-size: 10px;
-    background: var(--gold-glow);
-    border: 1px solid var(--gold-border);
-    color: var(--gold-base);
+    background: var(--emerald-glow);
+    border: 1px solid var(--emerald-border);
+    color: var(--emerald-base);
     padding: 4px 10px;
     border-radius: 3px;
     text-transform: uppercase;
@@ -940,7 +940,7 @@ p {
 }
 
 .social-card:hover {
-    border-color: var(--gold-border);
+    border-color: var(--emerald-border);
     transform: translateX(2px);
 }
 
@@ -955,7 +955,7 @@ p {
 }
 
 .social-card:hover::after {
-    color: var(--gold-base);
+    color: var(--emerald-base);
     transform: translate(2px, -2px);
 }
 
@@ -973,7 +973,7 @@ p {
 
 .sc-handle {
     font-size: 12px;
-    color: var(--gold-base);
+    color: var(--emerald-base);
     font-weight: 500;
 }
 
@@ -1127,7 +1127,7 @@ p {
 
 .modal-progress-bar {
     height: 100%;
-    background: var(--gold-gradient);
+    background: var(--emerald-gradient);
     width: 33.33%;
     transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1150,7 +1150,7 @@ p {
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--gold-base);
+    color: var(--emerald-base);
     margin-bottom: 20px;
 }
 
@@ -1168,6 +1168,7 @@ p {
 }
 
 .form-group input[type="text"], 
+.form-group input[type="email"],
 .form-group select, 
 .form-group textarea {
     background: var(--surface-card);
@@ -1182,11 +1183,12 @@ p {
 }
 
 .form-group input[type="text"]:focus, 
+.form-group input[type="email"]:focus,
 .form-group select:focus, 
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--gold-border);
-    box-shadow: 0 0 10px rgba(196, 154, 94, 0.1);
+    border-color: var(--emerald-border);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
 }
 
 /* Select element native styling override */
@@ -1207,7 +1209,7 @@ p {
 
 .checkbox-group input[type="checkbox"] {
     margin-top: 4px;
-    accent-color: var(--gold-base);
+    accent-color: var(--emerald-base);
     cursor: pointer;
 }
 
@@ -1283,8 +1285,8 @@ p {
 }
 
 .lightbox-nav:hover {
-    background: rgba(196, 154, 94, 0.15);
-    border-color: var(--gold-base);
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--emerald-base);
 }
 
 .lightbox-nav.prev {

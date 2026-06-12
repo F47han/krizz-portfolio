@@ -760,7 +760,75 @@
         <source src="audio.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Dynamic JavaScript (Will be created in later steps) -->
+    <!-- ==================== PAYMENT CHECKOUT MODAL ==================== -->
+    <div class="modal-overlay" id="checkout-modal" aria-hidden="true" role="dialog">
+        <div class="modal-card">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title" id="checkout-item-title">Checkout</h3>
+                <button class="modal-close" id="close-checkout-modal" aria-label="Close modal">&times;</button>
+            </div>
+            
+            <div id="checkout-main-content" style="padding: 24px;">
+                <div class="checkout-summary" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-line); border-radius: 4px; padding: 16px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 4px;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-faint); letter-spacing: 0.05em;">Selected Offer</span>
+                    <span class="summary-item" id="checkout-summary-name" style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--text-color);">Socratic Study Space</span>
+                    <span class="summary-price" id="checkout-summary-price" style="font-size: 16px; font-weight: 700; color: var(--emerald-base); margin-top: 4px;">&pound;20.00/mo</span>
+                </div>
+
+                <!-- Checkout Form -->
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label>Express Checkout</label>
+                        <button type="button" class="btn-apple-pay" id="btn-mock-apple-pay" style="width: 100%; background: #ffffff; color: #000000; border: none; padding: 14px; border-radius: 4px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s ease;">
+                            <svg viewBox="0 0 100 40" width="60" height="18" style="display: inline-block; fill: currentColor;">
+                                <path d="M13.2 16.5c0-3.3 2.7-4.9 2.8-5c-1.5-2.2-3.9-2.5-4.8-2.6-2.1-.2-4.1 1.2-5.2 1.2-1.1 0-2.7-1.2-4.4-1.2-2.3 0-4.4 1.3-5.6 3.4-2.4 4.1-.6 10.2 1.7 13.5 1.1 1.6 2.4 3.4 4.2 3.3 1.7-.1 2.3-1.1 4.4-1.1 2 0 2.6 1.1 4.3 1.1 1.8 0 3-.1 4.1-1.7 1.3-1.9 1.8-3.7 1.9-3.8c-.1-.1-3.7-1.4-3.7-5.6zm-2.8-11.2c.9-1.1 1.5-2.7 1.4-4.3-1.4.1-3.1.9-4.1 2.1-.9 1-1.5 2.6-1.3 4.1 1.6.1 3.1-.8 4-1.9z"/>
+                                <text x="24" y="24" font-family="-apple-system, sans-serif" font-weight="bold" font-size="20" fill="currentColor">Pay</text>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="checkout-divider" style="text-align: center; margin: 20px 0; position: relative;">
+                        <span style="background: #0f0e0d; padding: 0 12px; font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; position: relative; z-index: 2;">Or pay with credit card</span>
+                        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border-line); z-index: 1;"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-email">Email Address</label>
+                        <input type="email" id="card-email" placeholder="email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-details">Card Details</label>
+                        <div class="card-input-wrapper" style="border: 1px solid var(--border-line); border-radius: 4px; background: var(--surface-card); padding: 12px;">
+                            <input type="text" id="card-number" placeholder="4242 4242 4242 4242" required maxlength="19" style="border: none; background: transparent; padding: 0; font-size: 14px; width: 100%; color: var(--text-color); margin-bottom: 8px;">
+                            <div style="display: flex; gap: 8px;">
+                                <input type="text" id="card-expiry" placeholder="MM/YY" required maxlength="5" style="border: none; background: transparent; padding: 0; font-size: 14px; color: var(--text-color); width: 50%; text-align: left;">
+                                <input type="text" id="card-cvc" placeholder="CVC" required maxlength="3" style="border: none; background: transparent; padding: 0; font-size: 14px; color: var(--text-color); width: 50%; text-align: right;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-actions" style="margin-top: 24px;">
+                        <button type="submit" class="btn-primary" id="btn-pay-now" style="margin: 0;">Authorize Payment</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success Animation Screen -->
+            <div class="checkout-success" id="checkout-success-screen" style="display: none; padding: 40px 24px; text-align: center;">
+                <div class="success-icon-wrap" style="width: 60px; height: 60px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--emerald-base); color: var(--emerald-base); display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 0 auto 20px;">
+                    <span class="success-icon">✓</span>
+                </div>
+                <h4 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 8px;">Checkout Successful</h4>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">Welcome to the network. Your checkout has completed successfully and access setup is complete.</p>
+                <div class="btn-group" style="margin-top: 28px; max-width: 100%;">
+                    <button type="button" class="btn-secondary" id="close-success-btn">Return to Site</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic JavaScript -->
     <script src="app.js"></script>
 </body>
 </html>
