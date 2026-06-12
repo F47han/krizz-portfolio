@@ -12,29 +12,34 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://krizz.netlify.app/">
+    <meta property="og:url" content="https://krizz-portfolio.vercel.app/">
     <meta property="og:title" content="Krizz — Still chasing. Already living it.">
     <meta property="og:description" content="Helping internet money men solve B to C. High-ticket 1-on-1 direction, real estate connections in the UK and Medina, and motor fleet solutions.">
-    <meta property="og:image" content="https://krizz.netlify.app/og-preview.jpg">
+    <meta property="og:image" content="https://krizz-portfolio.vercel.app/hero.jpeg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://krizz.netlify.app/">
+    <meta property="twitter:url" content="https://krizz-portfolio.vercel.app/">
     <meta property="twitter:title" content="Krizz — Still chasing. Already living it.">
     <meta property="twitter:description" content="Helping internet money men solve B to C. High-ticket 1-on-1 direction, real estate connections in the UK and Medina, and motor fleet solutions.">
-    <meta property="twitter:image" content="https://krizz.netlify.app/og-preview.jpg">
+    <meta property="twitter:image" content="https://krizz-portfolio.vercel.app/hero.jpeg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Stylesheet Link (Will be created next) -->
+    <!-- Stylesheet Link -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <!-- Sticky Glassmorphism Header -->
+    <!-- Subtle Background Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid-overlay"></div>
+
+    <!-- Floating Glassmorphism Pill Header -->
     <header class="app-header">
         <div class="nav-in">
             <a href="#/" class="logo" id="nav-logo">Krizz</a>
@@ -46,7 +51,6 @@
                 <a href="#/work" class="nav-item" data-page="work">Work</a>
                 <a href="#/socials" class="nav-item" data-page="socials">Socials</a>
             </nav>
-            <div class="nav-indicator"></div>
         </div>
     </header>
 
@@ -55,35 +59,40 @@
 
         <!-- ==================== HOME PAGE ==================== -->
         <section id="page-home" class="page-view active">
-            <div class="hero">
-                <h1 class="huge-title">Krizz</h1>
-                <p class="kicker">Still chasing. <span class="accent-italic">Already living it.</span></p>
-                <p class="subtle-tagline">Helping internet money men solve B to C.</p>
-            </div>
-
-            <!-- Hero Image Showcase -->
-            <div class="showcase-container">
-                <img src="hero.jpeg" alt="Krizz" class="hero-image" loading="eager">
-                <div class="hero-overlay"></div>
-            </div>
-
-            <!-- Proof Grid -->
-            <div class="proof-grid">
-                <div class="proof-card">
-                    <span class="proof-number">100M+</span>
-                    <span class="proof-label">views,<br>all platforms</span>
+            <!-- Split Hero Section -->
+            <div class="home-hero-split">
+                <div class="hero-left">
+                    <h1 class="huge-title">Krizz</h1>
+                    <p class="kicker">Still chasing. <span class="accent-italic">Already living it.</span></p>
+                    <p class="subtle-tagline">Helping internet money men solve B to C.</p>
+                    <div class="hero-btn-group">
+                        <a href="#/direction" class="btn-primary">Direction &middot; &pound;1,000</a>
+                        <a href="#/socials" class="btn-secondary">Find me elsewhere</a>
+                    </div>
                 </div>
-                <div class="proof-card">
-                    <span class="proof-number">50K+</span>
-                    <span class="proof-label">followers</span>
-                </div>
-                <div class="proof-card">
-                    <span class="proof-number">50+</span>
-                    <span class="proof-label">men<br>mentored</span>
-                </div>
-                <div class="proof-card">
-                    <span class="proof-number">4+ yrs</span>
-                    <span class="proof-label">financial<br>services</span>
+                
+                <div class="hero-right">
+                    <div class="showcase-container">
+                        <img src="hero.jpeg" alt="Krizz" class="hero-image" loading="eager">
+                        <div class="hero-overlay"></div>
+                        <!-- Floating Glass Stats Badges -->
+                        <div class="floating-badge badge-1">
+                            <span class="fb-num">100M+</span>
+                            <span class="fb-label">Views</span>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <span class="fb-num">50K+</span>
+                            <span class="fb-label">Followers</span>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <span class="fb-num">50+</span>
+                            <span class="fb-label">Mentored</span>
+                        </div>
+                        <div class="floating-badge badge-4">
+                            <span class="fb-num">4+ yrs</span>
+                            <span class="fb-label">Finance</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -170,6 +179,72 @@
                 </div>
             </div>
 
+            <!-- Interactive WhatsApp Chat Simulator -->
+            <section class="content-block">
+                <span class="section-eyebrow">How We Work</span>
+                <h2 class="block-headline sm">No schedules. No performs. Just truth.</h2>
+                
+                <!-- Chat Simulator -->
+                <div class="whatsapp-chat-container">
+                    <div class="chat-header">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-user-info">
+                            <span class="chat-username">Krizz</span>
+                            <span class="chat-status">Active now</span>
+                        </div>
+                        <div class="chat-header-actions">
+                            <span class="chat-action-badge">Voice Note Portal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages">
+                        <div class="chat-bubble received">
+                            <p>Yo. Money's the easy part. You already cracked it. The hard part is what comes after. You got yourself from A to B. Nobody reaches C alone.</p>
+                            <span class="chat-time">11:02 PM</span>
+                        </div>
+                        
+                        <div class="chat-bubble sent">
+                            <p>I'm elite in the business lane, but slacking in the rest. Body slipped, family time is non-existent, and everything feels disconnected.</p>
+                            <span class="chat-time">11:04 PM</span>
+                        </div>
+
+                        <!-- Voice Note Bubble Component -->
+                        <div class="chat-bubble received voice-note-bubble">
+                            <div class="chat-voice-player">
+                                <button class="chat-voice-play-btn" id="voice-play-pause" aria-label="Play voice note">
+                                    <svg class="vp-play-icon" viewBox="0 0 24 24" width="16" height="16">
+                                        <path fill="currentColor" d="M8 5v14l11-7z"/>
+                                    </svg>
+                                    <svg class="vp-pause-icon" viewBox="0 0 24 24" width="16" height="16" style="display: none;">
+                                        <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                    </svg>
+                                </button>
+                                
+                                <div class="chat-voice-wave" id="equalizer-waveform">
+                                    <!-- Populated via CSS/JS -->
+                                    <div class="wave-bar" style="height: 15px;"></div>
+                                    <div class="wave-bar" style="height: 25px;"></div>
+                                    <div class="wave-bar" style="height: 10px;"></div>
+                                    <div class="wave-bar" style="height: 35px;"></div>
+                                    <div class="wave-bar" style="height: 20px;"></div>
+                                    <div class="wave-bar" style="height: 30px;"></div>
+                                    <div class="wave-bar" style="height: 15px;"></div>
+                                    <div class="wave-bar" style="height: 40px;"></div>
+                                    <div class="wave-bar" style="height: 25px;"></div>
+                                    <div class="wave-bar" style="height: 10px;"></div>
+                                    <div class="wave-bar" style="height: 30px;"></div>
+                                    <div class="wave-bar" style="height: 15px;"></div>
+                                </div>
+                                <span class="chat-voice-duration" id="voice-time">0:00 / 0:42</span>
+                            </div>
+                            <span class="chat-time">11:05 PM &nbsp;✓✓</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="vp-caption" style="margin-top: 12px; text-align: center;">Click play on the voice bubble above to hear a message from Krizz.</p>
+            </section>
+
             <!-- Audience Hook -->
             <section class="content-block">
                 <span class="section-eyebrow">Who this is for</span>
@@ -189,65 +264,6 @@
                 <div class="story-lines">
                     <p>You send the real thing. I think before I answer. Then I hand you back the sharper version of how you saw it.</p>
                     <p class="highlight-text">You leave needing me less. That was always the point.</p>
-                </div>
-            </section>
-
-            <!-- Simulated Voice Note Player component -->
-            <section class="content-block">
-                <span class="section-eyebrow">Why voice notes, not calls</span>
-                <h2 class="block-headline sm">Calls make you perform. Voice notes make you honest.</h2>
-                
-                <!-- Voice Player UI -->
-                <div class="voice-player-card">
-                    <div class="vp-header">
-                        <div class="vp-avatar">K</div>
-                        <div class="vp-info">
-                            <span class="vp-name">Krizz</span>
-                            <span class="vp-status">Active now</span>
-                        </div>
-                        <div class="vp-badge">Direct Note</div>
-                    </div>
-                    
-                    <div class="vp-body">
-                        <!-- Play/Pause Button -->
-                        <button class="vp-play-btn" id="voice-play-pause" aria-label="Play voice note">
-                            <svg class="vp-play-icon" viewBox="0 0 24 24" width="24" height="24">
-                                <path fill="currentColor" d="M8 5v14l11-7z"/>
-                            </svg>
-                            <svg class="vp-pause-icon" viewBox="0 0 24 24" width="24" height="24" style="display: none;">
-                                <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                            </svg>
-                        </button>
-                        
-                        <!-- Equalizer Animation Waveform -->
-                        <div class="vp-waveform" id="equalizer-waveform">
-                            <!-- JS will dynamically populate bars or we can pre-populate for styles -->
-                            <div class="wave-bar" style="height: 15px;"></div>
-                            <div class="wave-bar" style="height: 25px;"></div>
-                            <div class="wave-bar" style="height: 10px;"></div>
-                            <div class="wave-bar" style="height: 35px;"></div>
-                            <div class="wave-bar" style="height: 20px;"></div>
-                            <div class="wave-bar" style="height: 30px;"></div>
-                            <div class="wave-bar" style="height: 15px;"></div>
-                            <div class="wave-bar" style="height: 40px;"></div>
-                            <div class="wave-bar" style="height: 25px;"></div>
-                            <div class="wave-bar" style="height: 10px;"></div>
-                            <div class="wave-bar" style="height: 35px;"></div>
-                            <div class="wave-bar" style="height: 20px;"></div>
-                            <div class="wave-bar" style="height: 30px;"></div>
-                            <div class="wave-bar" style="height: 15px;"></div>
-                            <div class="wave-bar" style="height: 25px;"></div>
-                        </div>
-
-                        <!-- Time Tracker -->
-                        <span class="vp-time" id="voice-time">0:00 / 0:42</span>
-                    </div>
-                    <p class="vp-caption">Listen to a 42-second message from Krizz on the format.</p>
-                </div>
-
-                <div class="story-lines" style="margin-top: 24px;">
-                    <p>Send it at 11pm from the car. I'll sit with it. Come back with something worth the money.</p>
-                    <p>The best operators alive built their lives around fewer meetings. So did I.</p>
                 </div>
             </section>
 
